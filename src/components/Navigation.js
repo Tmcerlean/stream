@@ -59,7 +59,7 @@ const NavigationContainer = styled.nav`
     width: 100%;
     z-index: 1;
     padding: 0 5rem;
-    background: ${props => props.show ? "black" : "linear-gradient(to bottom,rgba(0,0,0,.7) 10%,rgba(0,0,0,0))"};
+    background: ${props => props.show ? "var(--dark-grey-1)" : "linear-gradient(to bottom,rgba(0,0,0,.7) 10%,rgba(0,0,0,0))"};
 
     transition-timing-function: ease-in;
     transition: all 0.5s;
