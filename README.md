@@ -1,3 +1,54 @@
+# Stream
+A Netflix inspired, desktop video streaming application with Stripe payment integration, populated via TMDb API.
+- [Live demo.](https://stream-b64bb.web.app/)
+
+![](StreamDemo.gif)
+
+## Features
+- The Movie Database (TMDb) API integration.
+- Firebase user authentication.
+- [Stripe](https://stripe.com/) payment integration.
+
+## Pages
+- Register
+- Sign-in
+- Home page
+- Profile 
+
+## Built With
+- React
+- React Router
+- React Firebase Hooks
+- Redux
+- Styled Components
+- Firebase Auth
+- Firebase Firestore
+- Firebase Hosting
+- TMDb API
+- Stripe-js
+- HTML5
+- CSS3
+
+## Future Improvements
+- Add responsive design for mobile devices.
+- Add capacity to add/remove movies to user's private list.
+
+## Getting Started
+- Clone this project: git clone https://github.com/Tmcerlean/stream.git
+- Install the required dependencies by using: npm install
+- A live demo of the project can be started by using: npm start
+- Distribution files can be produced using: npm run build
+
+## Acknowledgements
+- Design inspired by [Netflix](https://www.netflix.com/)
+
+## License
+- [MIT License](https://opensource.org/licenses/MIT)
+
+
+####################################################
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts
