@@ -2,7 +2,7 @@
 A Netflix inspired, desktop video streaming application with Stripe payment integration, populated via TMDb API.
 - [Live demo.](https://stream-b64bb.web.app/)
 
-![](StreamDemo.gif)
+![](new.gif)
 
 ## Features
 - The Movie Database (TMDb) API integration.
