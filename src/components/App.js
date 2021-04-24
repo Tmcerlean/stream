@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login, logout, selectUser } from '../features/userSlice';
 import Home from '../screens/Home';
 import Login from '../screens/Login';
+import Profile from '../screens/Profile';
 import { auth } from '../firebase';
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
           email: userAuth.email
         }))
       } else {
-        dispatch(logout)
+        dispatch(logout())
       }
     })
 
@@ -31,7 +32,7 @@ function App() {
       unsubscribe();
     }
 
-  }, []);
+  }, [dispatch]);
 
   return (
     <Router>
@@ -39,6 +40,9 @@ function App() {
         <Login />
       ) : (
       <Switch>
+          <Route path="/profile">
+              <Profile />
+          </Route>
           <Route path="/" exact>
               <Home />
           </Route>

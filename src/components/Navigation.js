@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import SearchIcon from '@material-ui/icons/Search';
 import RedeemIcon from '@material-ui/icons/Redeem';
@@ -8,6 +9,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 const Navigation = () => {
 
     const [show, setShow] = useState(true);
+    const history = useHistory()
 
     const transitionNavigation = () => {
         if (window.scrollY > 100) {
@@ -27,7 +29,7 @@ const Navigation = () => {
 
     return (
         <NavigationContainer show={show}>
-            <Logo>Stream.</Logo>
+            <Logo onClick={() => history.push('/')}>Stream.</Logo>
             <TextLinkBlock>
                 <TextLink>Home</TextLink>
                 <TextLink>Series</TextLink>
@@ -40,7 +42,7 @@ const Navigation = () => {
                 <RedeemIconStyled style={{ fontSize: 50 }} />
                 <NotificationsIconStyled style={{ fontSize: 50 }} />
                 <ProfileLinkBlock>
-                    <UserAvatar src="https://occ-0-2585-1167.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABZ3MDACwIkb75QyhEKYiqUIobApOgfIq_-e7vpHBbOThrbSPEGRNfbb5eIJV6R8dETkd-jLbJucne2M8bAGKqRU.png?r=517"/>
+                    <UserAvatar onClick={() => history.push('/profile')} src="https://occ-0-2585-1167.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABZ3MDACwIkb75QyhEKYiqUIobApOgfIq_-e7vpHBbOThrbSPEGRNfbb5eIJV6R8dETkd-jLbJucne2M8bAGKqRU.png?r=517"/>
                     <ArrowDropDownIconStyled style={{ fontSize: 28 }} />
                 </ProfileLinkBlock>
             </UserLinkBlock>
@@ -69,6 +71,7 @@ const Logo = styled.div`
     color: white;
     font-size: 3rem;
     font-weight: 900;
+    cursor: pointer;
 `;
 
 const TextLinkBlock = styled.div`
@@ -80,6 +83,7 @@ const TextLink = styled.div`
     padding-right: 2rem;
     color: white;
     font-size: 1.5rem;
+    cursor: pointer;
 `;
 
 const UserLinkBlock = styled.div`
@@ -91,21 +95,25 @@ const UserLinkBlock = styled.div`
 const SearchIconStyled = styled(SearchIcon)`
     color: white;
     padding-right: 2.5rem;
+    cursor: pointer;
 `;
 
 const RedeemIconStyled = styled(RedeemIcon)`
     color: white;
     padding-right: 2.5rem;
+    cursor: pointer;
 `;
 
 const NotificationsIconStyled = styled(NotificationsIcon)`
     color: white;
     padding-right: 2.5rem;
+    cursor: pointer;
 `;
 
 const ProfileLinkBlock = styled.div`
     display: flex;
     align-items: center;
+    cursor: pointer;
 `;
 
 const UserAvatar = styled.img`
@@ -114,6 +122,7 @@ const UserAvatar = styled.img`
     height: 3.5rem;
     border-radius: 0.5rem;
     object-fit: cover;
+    cursor: pointer;
 `;
 
 const ArrowDropDownIconStyled = styled(ArrowDropDownIcon)`

@@ -41,7 +41,7 @@ const SignIn = () => {
                     <MainHeader>Sign In</MainHeader>
                     <SignInForm>
                         <SignInInput placeholder='Email or phone number' ref={emailRef}/>
-                        <SignInInput placeholder='Password' ref={passwordRef}/>
+                        <SignInInput type='password' placeholder='Password' ref={passwordRef}/>
                         <SignInButton onClick={signIn}>Sign In</SignInButton>
                         <SignInSpan>New to Stream?</SignInSpan>
                         <SignInLink onClick={register}>&nbsp;Sign up now.</SignInLink>
@@ -113,6 +113,8 @@ const SignInInput = styled.input`
     margin-bottom: 1rem;
     font-size: 1.75rem;
     text-indent: 2rem;
+    color: white;
+    outline: none;
     background-color: #333333;
 `;
 
