@@ -8,6 +8,7 @@ import { loadStripe } from '@stripe/stripe-js';
 const Plans = () => {
 
     const [products, setProducts] = useState([]);
+    const [subscription, setSubscription] = useState(null);
     const user = useSelector(selectUser);
 
     useEffect(() => {
@@ -26,6 +27,18 @@ const Plans = () => {
             setProducts(productsObjects);
         });
     }, []);
+
+    useEffect(() => {
+        firestore.collection('customers').doc(user.uid).collection('subscriptions').get().then((querySnapshot) => {
+            querySnapshot.forEach(async subscription => {
+                setSubscription({
+                    role: subscription.data().role,
+                    current_period_start: subscription.data().current_period_end.seconds,
+                    current_period_end: subscription.data().current_period_start.seconds
+                })
+            })
+        })
+    }, [user.uid]);
 
     const loadPayment = async (priceId) => {
         const docRef = await firestore.collection('customers').doc(user.uid).collection('checkout_sessions').add({
@@ -52,13 +65,18 @@ const Plans = () => {
     return (
         <PlansContainer>
             {Object.entries(products).map(([productId, productData]) => {
+
+                const isCurrentPackage = productData.name?.toLowerCase().includes(subscription?.role);
+
                 return (
-                    <PlanDetails>
+                    <PlanDetails key={productId}>
                         <PlanInfo>
                             <PlanName>{productData.name}</PlanName>
                             <PlanDescription>{productData.description}</PlanDescription>
                         </PlanInfo>
-                        <SubscribeButton onClick={() => loadPayment(productData.prices.priceId)}>Subscribe</SubscribeButton>
+                        <SubscribeButton onClick={() => !isCurrentPackage && loadPayment(productData.prices.priceId)}>
+                            {isCurrentPackage ? 'Current Package' : 'Subscribe'}
+                        </SubscribeButton>
                     </PlanDetails>
                 )
             })}
